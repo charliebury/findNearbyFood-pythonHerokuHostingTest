@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 app.secret_key = 'jhtresferhwergfq34654q3efvtw43we'
 
+
 # homepage set to index.html
 @app.route('/')
 def index():
@@ -24,18 +25,16 @@ def enterFoodWants():
     if request.method == 'POST':
         location = request.form['location']
         foodType = request.form['foodType']
-        restaurantInfo = findARestaurant(foodType, location,5)
+        restaurantInfo = findARestaurant(foodType, location, 5)
         session['restaurantInfo'] = restaurantInfo
         if restaurantInfo != "No Restaurants Found":
-            # return jsonify(restaurant=restaurantInfo)
-            return render_template('result.html')
+             return render_template('result.html')
         else:
             return render_template('sorry.html')
 
 
 @app.route('/getFoodResult')
 def getFoodResult():
-    # restaurantInfo = {'name': 'restaurant_name', 'address': 'restaurant_address'}
     restaurantInfo = session.get('restaurantInfo')
     if restaurantInfo != "No Restaurants Found":
         return json.dumps(restaurantInfo)
