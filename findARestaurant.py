@@ -65,7 +65,7 @@ def findARestaurant(mealType, location, howMany):
                 suffix = firstpic['suffix']
                 imageURL = prefix + "300x300" + suffix
             else:
-                imageURL = "http://pixabay.com/get/8926af5eb597ca51ca4c/1433440765/cheeseburger-34314_1280.png?direct"
+                imageURL = "N/A"
 
             restaurantInfo = {'name': restaurant_name, 'address': restaurant_address, 'image': imageURL}
             restaurantInfos.append(restaurantInfo)
