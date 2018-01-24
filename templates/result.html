@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Test Heroku deploy site with python</title>
+    <meta name="generator" content="Bootply" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+
+    <script src="../static/js/jquery-1.11.2.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
+    <script>
+        $(function(){
+            GetResult();
+        });
+
+        function GetResult(){
+            $.ajax({
+                url : '/getFoodResult',
+                type : 'GET',
+                success: function(res){              
+                    var restaurantInfo = JSON.parse(res);
+                    $('#ulist').empty();
+                    $('#listTemplate').tmpl(restaurantInfo).appendTo('#ulist');
+                },
+                error: function(error){
+                    console.log(error);
+                }
+            });
+        }
+    </script>
+
+    <script id="listTemplate" type="text/x-jQuery-tmpl">
+        <li class="list-group-item">
+            <div class='searchResult'>
+                <label>
+                    <h3>${name}</h3> ${address}
+                </label>
+            </div>
+        </li>
+    </script>
+
+    <style>
+    .searchResult { color:rgb(14, 0, 25); }
+   </style>
+
+</head>
+
+<body>
+    <div class="container-full">
+
+        <div class="row">
+            <div class="col-lg-12 text-center v-center">
+                <div class="header">
+                    <h1>How about here?</h1>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="panel-body">
+                            <ul id="ulist" class="list-group">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <form class="col-lg-12" action="/goHome">
+                    <button class="btn btn-lg btn-primary" type="submit">Return</button>
+                </form>
+                <br>
+                <br>
+            </div>
+        </div>
+    </div>
+
+    <!-- script references -->
+    <!-- <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script> -->
+    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+
+</html>

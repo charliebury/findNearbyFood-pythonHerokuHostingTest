@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+    <title>Test Heroku deploy site with python</title>
+    <meta name="generator" content="Bootply" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.min.css" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/styles.css') }}" rel="stylesheet">
+
+    <script src="../static/js/jquery-1.11.2.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.templates/beta1/jquery.tmpl.js"></script>
+</head>
+
+<body>
+    <div class="container-full">
+        <div class="row">
+            <div class="col-lg-12 text-center v-center">
+                <h1>Find nearby food!</h1>
+                <p class="lead">Enter where and what you want to eat</p>
+                <br>
+                <form class="col-lg-12" action="/enterFoodWants" method="post">
+                    <div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
+                        <input class="form-control input-lg" title="Where do you want to eat" placeholder="Enter your location" type="location" name="location">
+                    </div>
+                    <div class="input-group" style="width:340px;text-align:center;margin:0 auto;">
+                        <input class="form-control input-lg" title="What food do you want" placeholder="Enter meal preference" type="foodType" name="foodType">
+                    </div>
+                    <br>
+                    <button class="btn btn-lg btn-primary" type="submit">Click</button>
+                </form>
+
+
+            </div>
+        </div>
+        <br>
+        <br>
+    </div>
+    <div class="container">
+        <hr>
+        <div class="row">
+        </div>
+    </div>
+    <!-- script references -->
+<!--     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js"></script>
+ -->    <script src="{{ url_for('static', filename='js/bootstrap.min.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/scripts.js') }}"></script>
+</body>
+
+</html>
